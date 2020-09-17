@@ -33,7 +33,12 @@
         </div>
         <div class="block">
           <el-select v-model="value" :placeholder="$t('i18nView.selectPlaceholder')">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
         </div>
         <div class="block">
@@ -69,84 +74,82 @@
 </template>
 
 <script>
-import local from "./local";
-const viewName = "i18nView";
+import local from './local'
+const viewName = 'i18nView'
 
 export default {
-  name: "I18n",
+  name: 'I18n',
   data() {
     return {
-      date: "",
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        }
-      ],
+      date: '',
+      tableData: [{
+        date: '2016-05-03',
+        name: 'Tom',
+        address: 'No. 189, Grove St, Los Angeles'
+      },
+      {
+        date: '2016-05-02',
+        name: 'Tom',
+        address: 'No. 189, Grove St, Los Angeles'
+      },
+      {
+        date: '2016-05-04',
+        name: 'Tom',
+        address: 'No. 189, Grove St, Los Angeles'
+      },
+      {
+        date: '2016-05-01',
+        name: 'Tom',
+        address: 'No. 189, Grove St, Los Angeles'
+      }],
       options: [],
-      value: ""
-    };
+      value: ''
+    }
   },
   computed: {
     lang: {
       get() {
-        return this.$store.state.app.language;
+        return this.$store.state.app.language
       },
       set(lang) {
-        this.$i18n.locale = lang;
-        this.$store.dispatch("app/setLanguage", lang);
+        this.$i18n.locale = lang
+        this.$store.dispatch('app/setLanguage', lang)
       }
     }
   },
   watch: {
     lang() {
-      this.setOptions();
+      this.setOptions()
     }
   },
   created() {
-    if (!this.$i18n.getLocaleMessage("en")[viewName]) {
-      this.$i18n.mergeLocaleMessage("en", local.en);
-      this.$i18n.mergeLocaleMessage("zh", local.zh);
-      this.$i18n.mergeLocaleMessage("es", local.es);
-      this.$i18n.mergeLocaleMessage("ja", local.ja);
+    if (!this.$i18n.getLocaleMessage('en')[viewName]) {
+      this.$i18n.mergeLocaleMessage('en', local.en)
+      this.$i18n.mergeLocaleMessage('zh', local.zh)
+      this.$i18n.mergeLocaleMessage('es', local.es)
+      this.$i18n.mergeLocaleMessage('ja', local.ja)
     }
-    this.setOptions(); // set default select options
+    this.setOptions() // set default select options
   },
   methods: {
     setOptions() {
       this.options = [
         {
-          value: "1",
-          label: this.$t("i18nView.one")
+          value: '1',
+          label: this.$t('i18nView.one')
         },
         {
-          value: "2",
-          label: this.$t("i18nView.two")
+          value: '2',
+          label: this.$t('i18nView.two')
         },
         {
-          value: "3",
-          label: this.$t("i18nView.three")
+          value: '3',
+          label: this.$t('i18nView.three')
         }
-      ];
+      ]
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -155,7 +158,7 @@ export default {
   max-width: 100%;
   margin: 20px auto;
 }
-.item-btn {
+.item-btn{
   margin-bottom: 15px;
   margin-left: 0px;
 }

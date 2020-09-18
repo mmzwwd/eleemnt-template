@@ -25,12 +25,6 @@ const componentsRouter = {
       meta: { title: 'markdown' }
     },
     {
-      path: 'json-editor',
-      component: () => import('@/views/components-demo/json-editor'),
-      name: 'JsonEditorDemo',
-      meta: { title: 'jsonEditor' }
-    },
-    {
       path: 'split-pane',
       component: () => import('@/views/components-demo/split-pane'),
       name: 'SplitpaneDemo',

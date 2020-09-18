@@ -23,6 +23,7 @@ export default {
     }
   },
   mounted() {
+    console.log(process.env.NODE_ENV === 'development')
     this.driver = new Driver()
   },
   methods: {
